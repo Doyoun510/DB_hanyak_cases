@@ -1,4 +1,6 @@
-const BASE_URL = '/api';
+// 배포 시: VITE_API_URL 환경변수 (예: https://xxx.onrender.com/api)
+// 로컬 개발: Vite proxy로 '/api' → http://backend:4000
+const BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 const request = async (path, options = {}) => {
   const token = sessionStorage.getItem('token');

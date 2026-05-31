@@ -1,0 +1,58 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  PHARMACIST
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(USER)
+  cases     Case[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Prescription {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  category    String
+  ingredients String?  // 대표 처방 약재 (콤마로 구분)
+  efficacy    String?  // 효능
+  description String?  // 출전·기타 설명
+  cases       Case[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Case {
+  id              Int          @id @default(autoincrement())
+  title           String
+  // 환자 정보
+  patientAge      Int?
+  patientGender   String?      // "남" | "여"
+  patientWeight   Float?       // kg
+  chiefComplaint  String?      // 주소(主訴)
+  diagnosis       String?      // 변증/진단
+  // 처방 및 경과
+  treatment       String?      // 처방 내용 (구성·용량·복용법)
+  progress        String?      // 경과별 변화 (날짜순)
+  content         String       // 기존 호환용 (요약/메모)
+  prescription    Prescription @relation(fields: [prescriptionId], references: [id])
+  prescriptionId  Int
+  author          User         @relation(fields: [authorId], references: [id])
+  authorId        Int
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}

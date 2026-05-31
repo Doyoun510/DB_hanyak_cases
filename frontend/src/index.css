@@ -1,0 +1,177 @@
+:root {
+  --bg: #f6f8f7;
+  --surface: #ffffff;
+  --border: #e5e9e7;
+  --text: #1f2a26;
+  --text-muted: #6b7773;
+  --primary: #2f8f7d;        /* 한방 청록 */
+  --primary-dark: #226b5d;
+  --primary-soft: #e6f4f0;
+  --accent: #b48a3c;          /* 따뜻한 황금 */
+  --danger: #c0392b;
+  --shadow-sm: 0 1px 2px rgba(15, 30, 25, 0.05);
+  --shadow-md: 0 4px 14px rgba(15, 30, 25, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+input, textarea, select, button {
+  font-family: inherit;
+}
+
+input, textarea, select {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(47, 143, 125, 0.15);
+}
+
+/* 헤더 */
+.app-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+.app-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.app-brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  cursor: pointer;
+  letter-spacing: -0.3px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.app-brand:hover { color: var(--primary); }
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.app-user {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.app-user-role {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+/* 버튼 */
+.btn-primary {
+  padding: 9px 18px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-ghost {
+  padding: 7px 14px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+
+.btn-danger {
+  padding: 7px 14px;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid #f5c2bd;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn-danger:hover { background: #fdebe9; }
+
+/* 카드 */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s, transform 0.1s, border-color 0.15s;
+  cursor: pointer;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-soft);
+}
+.card-static {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 카테고리 칩 */
+.cat-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+.cat-보기 { background: #fdf3e2; color: #92691f; }
+.cat-보혈 { background: #fde6e6; color: #a23838; }
+.cat-보양 { background: #fff0d6; color: #8b5a1e; }
+.cat-보음 { background: #e5f0fa; color: #1e5891; }
+.cat-해표 { background: #e6f4f0; color: #226b5d; }
+.cat-청열 { background: #e0f1f7; color: #1d6a85; }
+.cat-화해 { background: #ede4f5; color: #5d3989; }
+.cat-거습 { background: #ebf3df; color: #4d6f25; }
+.cat-이기 { background: #fff4dc; color: #8a5a13; }
+.cat-안신 { background: #eee5f8; color: #5a3b8c; }
+.cat-소도 { background: #f5e5d8; color: #864e23; }
+.cat-거담 { background: #e4eef0; color: #2c5b67; }
+.cat-기타 { background: #eceff1; color: #546e7a; }
